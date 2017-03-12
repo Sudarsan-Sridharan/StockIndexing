@@ -6,15 +6,6 @@ import classnames from 'classnames';
 import superagent from 'superagent';
 
 export default class App extends Component {
-    constructor(){
-        super();
-        console.log('superagent', superagent);
-        let response = superagent
-            .post('/api/hello')
-            .send({name : 'Arpit Goyal'})
-            .set('Accept', 'application/json')
-            .end((err, res) => console.log(res.text));
-    }
 
   render() {
     return (
@@ -72,8 +63,29 @@ export default class App extends Component {
     				</div>
     			</Col>    			
     		</Row>
+
+            <div className="row">
+                <div className="col-lg-12">
+                    <button
+                        onClick={() => this.greet()} 
+                        className="btn btn-danger btn-lg">
+                    Click for Greetings</button>
+                    <p className="well" ref="outPara" >Hello World!</p>
+                </div>
+            </div>
     	
       </div>
     );
+  }
+
+  greet(){
+    console.log('this', this.refs.outPara.innerHTML);
+    superagent
+        .post('/api/hello')
+        .send({name: 'Parth Goyal'})
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+            this.refs.outPara.innerHTML = res.body.message
+        });
   }
 }
