@@ -25,3 +25,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+## static files, these files will be the build from frontend files
+src/main/resources/static/
