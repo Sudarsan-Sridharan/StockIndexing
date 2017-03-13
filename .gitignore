@@ -28,3 +28,6 @@ nbdist/
 
 ## static files, these files will be the build from frontend files
 src/main/resources/static/
+
+## cache store
+jcs_swap
